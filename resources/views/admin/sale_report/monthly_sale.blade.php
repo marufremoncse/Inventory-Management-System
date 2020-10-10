@@ -36,70 +36,30 @@
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-hover">
                                     <thead>
-                                    <tr>
+                                      <tr>
                                         <th>SL No.</th>
-                                        <th>Profile Picture</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Mobile</th>
-                                        <th>Address</th>
-                                        <th>Actions</th>
-                                    </tr>
+                                        <th>Month-Year</th>
+                                        <th>Total Sale(s)</th>
+                                        <th>Action</th>
+                                      </tr>
                                     </thead>
                                     <tbody>
                                     <div style="display: none">
-                                        {{$i =  ($user_all->currentPage()-1)*$items}}
+                                        {{$i =  ($monthly_sale->currentPage()-1)*$items}}
                                     </div>
-                                    @foreach($user_all as $user)
+                                    @foreach($monthly_sale as $sale)
                                         <tr>
-                                            @if($user->id != Auth::user()->id)
                                             <td>{{++$i}}</td>
-                                            <td><img src="{{URL::asset($user->image)}}" alt="profile Pic" height="50" width="50"></td>
-                                            <td>{{$user->first_name}}&nbsp;{{$user->last_name}}</td>
-                                            <td>{{$user->email}}</td>
-                                            <td>{{$user->mobile}}</td>
-                                            <td>{{$user->address}}</td>
-                                            <td>
-                                                <div class="row">
-                                                    <a href="{{route('user.edit',$user->id)}}"><span title="Edit" type="button" class="btn btn-flat btn-primary"><i class="fa fa-edit"></i></span></a>&nbsp;
-                                           
-                                                    <button class="btn btn-flat btn-danger" type="button" data-toggle="modal" data-target="#modal-del{{$user->id}}" title="Delete"><i class="fa fa-trash"></i></button>
-                                                </div>
-                                            </td>
-                                            @endif
+                                            <td>{{date('M-', strtotime($sale->month))}}{{date('y', strtotime($sale->year))}}</td>
+                                            <td>{{$sale->count}}</td>
+                                            <td><a href="{{route('monthly-sale-details',['year'=>$sale->year,'month'=>$sale->month])}}"><span title="Details" type="button" class="btn btn-flat btn-info"><i class="fa fa-info"></i></span></a>&nbsp;</td>
                                         </tr>
-                                        <div class="modal fade" id="modal-del{{$user->id}}">
-                                            <div class="modal-dialog modal-del">
-                                              <div class="modal-content">
-                                                <div class="modal-header">
-                                                  <h4 class="modal-title">Delete Confirmation</h4>
-                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                  </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                  <p style="text-align: center;">Are you sure to delete?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                    <form action="{{route('user.destroy',$user->id)}}" method="post">
-                                                        @csrf
-                                                        {{method_field('DELETE')}}
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </form>
-                                                </div>
-                                              </div>
-                                              <!-- /.modal-content -->
-                                            </div>
-                                            <!-- /.modal-dialog -->
-                                        </div>
-                                        <!-- /.modal -->
                                     @endforeach
                                     </tbody>
                                 </table>
                             </div>
                             <div style="margin-left: 20px">
-                                {{ $user_all->links() }}
+                                {{ $monthly_sale->links() }}
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -115,5 +75,3 @@
     </div>
     <!-- /.content -->
 @endsection
-
-

@@ -64,7 +64,7 @@
                   <div class="icon">
                     <i class="fas fa-money-bill-alt"></i>
                   </div>
-                  <a href="{{route('sale.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{route('yearly-sale')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
             </div>

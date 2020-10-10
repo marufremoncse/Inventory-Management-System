@@ -1,4 +1,3 @@
-
 @extends('admin.master')
 @section('content')
 <div class="content-wrapper">
@@ -23,66 +22,50 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-              <div class="col-lg-3 col-6">
+              <div class="col-lg-4 col-6">
                 <!-- small box -->
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3>{{\App\Customer::all()->count()}}</h3>
+                    <h3></h3>
 
-                    <p>Customers</p>
+                    <p>Daily Purchase</p>
                   </div>
                   <div class="icon">
                     <i class="fas fa-handshake"></i>
                   </div>
-                  <a href="{{route('customer.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{route('daily-purchase')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <!-- ./col -->
-              <div class="col-lg-3 col-6">
+              <div class="col-lg-4 col-6">
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3>{{\App\Supplier::all()->count()}}</h3>
+                    <h3></h3>
 
-                    <p>Suppliers</p>
+                    <p>Monthly Purchase</p>
                   </div>
                   <div class="icon">
                     <i class="fas fa-users"></i>
                   </div>
-                  <a href="{{route('supplier.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{route('monthly-purchase')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <!-- ./col -->
-              <div class="col-lg-3 col-6">
+              <div class="col-lg-4 col-6">
                 <!-- small box -->
                 <div class="small-box bg-warning">
                   <div class="inner">
-                    <h3>{{\App\Sale::all()->count()}}</h3>
+                    <h3></h3>
 
-                    <p>Sales</p>
+                    <p>Yearly Purchase</p>
                   </div>
                   <div class="icon">
                     <i class="fas fa-money-bill-alt"></i>
                   </div>
-                  <a href="{{route('sale.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{route('yearly-purchase')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
-              <!-- ./col -->
-              <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                  <div class="inner">
-                    <h3>{{\App\Purchase::all()->count()}}</h3>
-
-                    <p>Purchases</p>
-                  </div>
-                  <div class="icon">
-                    <i class="fas fa-shopping-cart"></i>
-                  </div>
-                  <a href="{{route('purchase.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
-              <!-- ./col -->
             </div>
         </div><!-- /.container-fluid -->
     </section>

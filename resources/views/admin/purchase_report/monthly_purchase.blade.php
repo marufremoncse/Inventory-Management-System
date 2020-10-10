@@ -38,28 +38,28 @@
                                     <thead>
                                       <tr>
                                         <th>SL No.</th>
-                                        <th>Year</th>
-                                        <th>Total Sale(s)</th>
+                                        <th>Month-Year</th>
+                                        <th>Total Purchase(s)</th>
                                         <th>Action</th>
                                       </tr>
                                     </thead>
                                     <tbody>
                                     <div style="display: none">
-                                        {{$i =  ($yearly_sale->currentPage()-1)*$items}}
+                                        {{$i =  ($monthly_purchase->currentPage()-1)*$items}}
                                     </div>
-                                    @foreach($yearly_sale as $sale)
+                                    @foreach($monthly_purchase as $purchase)
                                         <tr>
                                             <td>{{++$i}}</td>
-                                            <td>{{date('Y', strtotime($sale->year))}}</td>
-                                            <td>{{$sale->count}}</td>
-                                            <td><a href="{{route('yearly-sale-details',$sale->year)}}"><span title="Details" type="button" class="btn btn-flat btn-info"><i class="fa fa-info"></i></span></a>&nbsp;</td>
+                                            <td>{{date('M-', strtotime($purchase->month))}}{{date('y', strtotime($purchase->year))}}</td>
+                                            <td>{{$purchase->count}}</td>
+                                            <td><a href="{{route('monthly-purchase-details',['year'=>$purchase->year,'month'=>$purchase->month])}}"><span title="Details" type="button" class="btn btn-flat btn-info"><i class="fa fa-info"></i></span></a>&nbsp;</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
                             </div>
                             <div style="margin-left: 20px">
-                                {{ $yearly_sale->links() }}
+                                {{ $monthly_purchase->links() }}
                             </div>
                             <!-- /.card-body -->
                         </div>
